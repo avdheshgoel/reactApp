@@ -1,22 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { useQuery } from '@apollo/client'
+import { GET_ALL_STUDENTS, GET_ALL_CLASSROOMS, GET_ALL_TEACHERS} from './queries'
+import Student from './Student'
 
 function App() {
+
+const { loading, error, data } = useQuery(GET_ALL_STUDENTS)
+
+  if (loading) return <p>Loading...</p>
+  if (error) return <p>Error {error.message}</p>
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+
+       <div className="row">
+        All Students
+              {data?.getStudent.map(student =>
+
+                <Student student={student} key={student.id} />
+              )}
+            </div>
       </header>
     </div>
   );

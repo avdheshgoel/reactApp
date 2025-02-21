@@ -5,10 +5,17 @@ WORKDIR /usr/src/app
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
 # where available (npm@5+)
 COPY package*.json ./
-RUN npm install
-# If you are building your code for production
-# RUN npm ci --only=production
-# Bundle app source
+# Copy all files in the current directory into the container
 COPY . .
-EXPOSE 4000
-CMD [ "node", "src/loader-example.js" ]
+
+EXPOSE 3000
+# Install 'serve', a static file serving package globally in the container
+RUN npm install -g serve
+
+# Install all the node modules required by the React app
+RUN npm install
+# Build the React app
+RUN npm run build
+
+# Serve the 'build' directory on port 4200 using 'serve'
+CMD ["serve", "-s", "-l", "4200", "./build"]

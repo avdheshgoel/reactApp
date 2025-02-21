@@ -1,11 +1,11 @@
-const Classroom = ( { classroom } ) => {
+const Teacher = ( { teacher } ) => {
   return (
     <div>
      <div>
-        <p>Classroom Name : {classroom.name}</p>
+        <p>Teacher Name : {teacher.firstName}</p>
 
       </div>
     </div>
   )
 }
-export default Classroom
+export default Teacher

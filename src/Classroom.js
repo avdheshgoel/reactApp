@@ -1,13 +1,12 @@
-const Student = ( { student } ) => {
+import Teacher from './Teacher'
+const Classroom = ( { classroom } ) => {
   return (
     <div>
      <div>
-        <h5>Name : {student.name}</h5>
-        <p>
-          Age : {student.age} - Email : {student.email}
-        </p>
+        <p>Classroom : {classroom.name}</p>
+        <Teacher teacher={classroom.teacher} key={classroom.teacher.id} />
       </div>
     </div>
   )
 }
-export default Student
+export default Classroom
