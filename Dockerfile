@@ -17,5 +17,5 @@ RUN npm install
 # Build the React app
 RUN npm run build
 
-# Serve the 'build' directory on port 4200 using 'serve'
-CMD ["serve", "-s", "-l", "4200", "./build"]
+# Serve the 'build' directory on port 3000 using 'serve'
+CMD ["serve", "-s", "-l", "3000", "./build"]
